@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Beloved Jucel</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+:root {
+    --primary-color: #ff6b6b;
+    --secondary-color: #674ea7;
+    --accent-color: #ffb8b8;
+    --dark-color: #2c3e50;
+    --light-color: #f8d7da;
+    --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    --shadow-hover: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    --text-color: #2d3436;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: var(--text-color);
+    line-height: 1.8;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    color: var(--secondary-color);
+    position: relative;
+    font-size: 3rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 3px;
+}
+
+a {
+    color: var(--light-color);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: block;
+}
+
+.toggle-btn {
+    position: fixed;
+    left: 30px;
+    top: 30px;
+    cursor: pointer;
+    z-index: 100;
+    display: none;
+    background: var(--primary-color);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.toggle-btn:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-hover);
+    animation: none;
+}
+
+.toggle-btn i {
+    color: white;
+    font-size: 1.8rem;
+}
+
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+}
+
+.wrapper .sidenav {
+    width: 300px;
+    background: linear-gradient(135deg, var(--dark-color) 0%, #6a3093 100%);
+    padding-top: 100px;
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    height: 100%;
+    z-index: 10;
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+.sidenav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=10') center/cover;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+ul li {
+    text-align: center;
+    list-style: none;
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+}
+
+ul li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.6s;
+}
+
+ul li:hover::before {
+    left: 100%;
+}
+
+ul li:hover {
+    background: rgba(106, 48, 147, 0.5);
+    transform: translateX(10px);
+}
+
+ul li a {
+    display: block;
+    padding: 10px;
+    position: relative;
+    z-index: 1;
+    font-size: 1.1rem;
+}
+
+ul li a i {
+    margin-right: 15px;
+    font-size: 1.3rem;
+    color: var(--accent-color);
+}
+
+.wrapper .main-content {
+    flex: 1;
+    margin-left: 300px;
+    padding: 60px;
+    background: linear-gradient(135deg, rgba(5, 48, 167, 0.9) 0%, rgba(245,245,245,0.9) 100%);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background: url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=10') center/cover;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+section {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    line-height: 1.9;
+    color: var(--text-color);
+    position: relative;
+}
+
+section p {
+    margin-bottom: 2rem;
+    position: relative;
+    padding-left: 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+section p.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+section p::before {
+    content: '❤';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    top: 5px;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.2); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+#section1 h1 {
+    color: var(--primary-color);
+    font-size: 4rem;
+    margin-bottom: 3rem;
+    text-align: left;
+    padding-bottom: 15px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+#section1 h1.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#section1 h1::after {
+    left: 0;
+    transform: none;
+    width: 200px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+/* Floating hearts background */
+.hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    color: rgba(255, 107, 107, 0.5);
+    animation: float 10s linear infinite;
+    opacity: 0;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Signature style */
+.signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-top: 50px;
+    text-align: right;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s ease 1s;
+}
+
+.signature.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Love letter envelope effect */
+.envelope {
+    position: relative;
+    background: white;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    max-width: 800px;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateY(5deg);
+    transition: var(--transition);
+}
+
+.envelope:hover {
+    transform: perspective(1000px) rotateY(0);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.envelope::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 5px 5px 0 0;
+}
+
+/* Navbar toggle state */
+.wrapper.collapsed .sidenav {
+    transform: translateX(-100%);
+}
+
+.wrapper.collapsed .main-content {
+    margin-left: 0;
+}
+
+.wrapper.collapsed .toggle-btn {
+    left: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+    .wrapper .sidenav {
+        width: 250px;
+    }
+    
+    .wrapper .main-content {
+        margin-left: 250px;
+        padding: 40px;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    #section1 h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .toggle-btn {
+        display: flex;
+    }
+    
+    .wrapper .sidenav {
+        transform: translateX(-100%);
+        width: 280px;
+    }
+    
+    .wrapper .sidenav.active {
+        transform: translateX(0);
+    }
+    
+    .wrapper .main-content {
+        margin-left: 0;
+        padding: 30px 20px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    #section1 h1 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    section {
+        font-size: 1.1rem;
+    }
+    
+    .wrapper.collapsed .sidenav {
+        transform: translateX(-100%);
+    }
+}
+
+/* Floating action button for mobile */
+.mobile-nav-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow-hover);
+    z-index: 100;
+    cursor: pointer;
+    display: none;
+    transition: var(--transition);
+    animation: pulse 2s infinite;
+}
+
+.mobile-nav-toggle:hover {
+    animation: none;
+    transform: scale(1.1);
+}
+
+.mobile-nav-toggle i {
+    color: white;
+    font-size: 1.8rem;
+}
+
+@media (max-width: 768px) {
+    .mobile-nav-toggle {
+        display: flex;
+    }
+}
+
+/* Music player */
+.music-player {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 90;
+}
+
+.music-player button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.music-player button:hover {
+    color: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+.music-player .song-info {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--primary-color);
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+    opacity: 0.7;
+    z-index: 80;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-20px);}
+    60% {transform: translateY(-10px);}
+}
+
+/* Date display */
+.date-display {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    font-style: italic;
+}
+    </style>
+</head>
+<body>
+    <div class="toggle-btn" id="toggleBtn">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <div class="wrapper" id="wrapper">
+        <!--side navigation-->
+        <div class="sidenav"> 
+            <ul>
+                <li><a href="webdev.html"><i class="fas fa-heart"></i> ABOUT YOU</a></li>
+                <li><a href="project.html"><i class="fas fa-camera"></i>PHOTOS OF YOU</a></li>
+                <li><a href="video.html"><i class="fas fa-video"></i>VIDEO OF YOU</a></li>
+                <li><a href="audio.html"><i class="fas fa-music"></i>SONG U REMEMBER ME</a></li>
+                
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="date-display" id="currentDate"></div>
+            
+            <section id="section1">
+                <h1 id="mainHeading">My Dearest Jucel</h1>
+                <div class="envelope">
+                    <p>My love,</p>
+                    <p>As I sit here thinking of you, my heart overflows with emotions that words can hardly capture. You are the melody to my life's song, the colors to my world's canvas.</p>
+                    <p>From the moment we match, I knew there was something extraordinary about you. Your smile lights up my darkest days, your laughter is my favorite symphony, and your love is the greatest gift I've ever received.</p>
+                    <p>I cherish every moment we've shared - the quiet mornings, the silly inside jokes that no one else understands. These memories are treasures I hold close to my heart.</p>
+                    <p>Your strength amazes me. Your kindness inspires me. Your love completes me. In your eyes, I've found my home; in your arms, I've found my peace.</p>
+                    <p>I promise to stand by you through all of life's journeys - to celebrate your joys, comfort your sorrows, and love you more with each passing day.</p>
+                    <p>You are my today and all of my tomorrows. My heart beats for you, now and always.</p>
+                    <p>Forever yours,</p>
+                    <p class="signature" id="signature">Ronel</p>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <div class="mobile-nav-toggle" id="mobileToggle">
+        <i class="fas fa-heart"></i>
+    </div>
+    
+    <div class="music-player">
+        <button id="playBtn"><i class="fas fa-play"></i></button>
+        <div class="song-info">Our Song: Perfect - Ed Sheeran</div>
+    </div>
+    
+    <div class="scroll-indicator">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    
+    <div class="hearts" id="heartsContainer"></div>
+    
+    <script>
+        // Toggle sidebar navigation
+        const toggleBtn = document.getElementById('toggleBtn');
+        const mobileToggle = document.getElementById('mobileToggle');
+        const wrapper = document.getElementById('wrapper');
+        const sidenav = document.querySelector('.sidenav');
+        
+        function toggleNav() {
+            wrapper.classList.toggle('collapsed');
+            // Change icon based on state
+            const icon = toggleBtn.querySelector('i');
+            const mobileIcon = mobileToggle.querySelector('i');
+            if (wrapper.classList.contains('collapsed')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                mobileIcon.classList.remove('fa-heart');
+                mobileIcon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                mobileIcon.classList.remove('fa-times');
+                mobileIcon.classList.add('fa-heart');
+            }
+        }
+        
+        toggleBtn.addEventListener('click', toggleNav);
+        mobileToggle.addEventListener('click', toggleNav);
+        
+        // Close sidebar when clicking on a link (for mobile)
+        const navLinks = document.querySelectorAll('.sidenav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    toggleNav();
+                }
+            });
+        });
+        
+        // Animate paragraphs on scroll
+        const paragraphs = document.querySelectorAll('section p');
+        const mainHeading = document.getElementById('mainHeading');
+        const signature = document.getElementById('signature');
+        
+        function checkVisibility() {
+            // Animate main heading
+            const headingPosition = mainHeading.getBoundingClientRect().top;
+            if (headingPosition < window.innerHeight - 100) {
+                mainHeading.classList.add('visible');
+            }
+            
+            // Animate paragraphs
+            paragraphs.forEach((paragraph, index) => {
+                const paragraphPosition = paragraph.getBoundingClientRect().top;
+                if (paragraphPosition < window.innerHeight - 50) {
+                    setTimeout(() => {
+                        paragraph.classList.add('visible');
+                    }, index * 200);
+                }
+            });
+            
+            // Animate signature
+            const signaturePosition = signature.getBoundingClientRect().top;
+            if (signaturePosition < window.innerHeight - 50) {
+                signature.classList.add('visible');
+            }
+        }
+        
+        window.addEventListener('scroll', checkVisibility);
+        window.addEventListener('load', checkVisibility);
+        
+        // Create floating hearts
+        const heartsContainer = document.getElementById('heartsContainer');
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            heartsContainer.appendChild(heart);
+            
+            // Remove heart after animation completes
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+        
+        // Create hearts periodically
+        setInterval(createHeart, 300);
+        
+        // Music player functionality
+        const playBtn = document.getElementById('playBtn');
+        const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'); // Replace with your song
+        let isPlaying = false;
+        
+        playBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+            } else {
+                audio.play();
+                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+            isPlaying = !isPlaying;
+        });
+        
+        // Display current date
+        const dateDisplay = document.getElementById('currentDate');
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        dateDisplay.textContent = new Date().toLocaleDateString('en-US', options);
+        
+        // Typewriter effect for heading (optional)
+        const headingText = "My Dearest Jucel";
+        let i = 0;
+        mainHeading.textContent = '';
+        
+        function typeWriter() {
+            if (i < headingText.length) {
+                mainHeading.textContent += headingText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 150);
+            }
+        }
+        
+        // Uncomment to enable typewriter effect
+        // setTimeout(typeWriter, 1000);
+    </script>
+</body>
+</html>
